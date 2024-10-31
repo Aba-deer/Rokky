@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квест: Вопрос 1</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.ibb.co/ZBKTyKL/fd1ee8ec0a3345088e6957658de3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #fe5000;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: white;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-top: 15px;
+            background-color: #fe5000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #fe5000;
+        }
+        .message {
+            margin-top: 15px;
+            font-size: 1em;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Как зовут персонажа МитЛоуфа в «Шоу ужасов Рокки Хоррора»?</h1>
+    <div class="options">
+        <label><input type="radio" name="answer" value="1"> Генри</label>
+        <label><input type="radio" name="answer" value="2"> Эдди</label>
+        <label><input type="radio" name="answer" value="3"> Чак</label>
+        <label><input type="radio" name="answer" value="4"> Аль</label>
+    </div>
+    <button onclick="checkAnswer()">Проверить ответ</button>
+    <p id="message" class="message"></p>
+</div>
+
+<script>
+    function checkAnswer() {
+        const selectedOption = document.querySelector('input[name="answer"]:checked');
+        const message = document.getElementById("message");
+        
+        if (selectedOption) {
+            if (selectedOption.value === "2") {
+                message.innerHTML = "В Цветочном пространстве, том, что средний сын<br>есть прибор замечательный один.<br>Холодом не веет уже от него,<br>зато новую загадку преподнесет оно.";
+                message.className = "message success";
+            } else {
+                message.textContent = "Неправильный ответ";
+                message.className = "message error";
+            }
+        } else {
+            message.textContent = "Выберите один из вариантов";
+            message.className = "message error";
+        }
+    }
+</script>
+
+</body>
+</html>
